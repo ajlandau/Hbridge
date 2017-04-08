@@ -6,7 +6,7 @@
 //  Copyright © 2017 Amy Landau. All rights reserved.
 //
 //                       o
-//                       |
+//                       | nodei
 //        _______________|_______________
 //       |_____                     _____|
 //       |     |                   |     |
@@ -14,7 +14,7 @@
 //      \     /_\ D1          D2  /_\     /  s2
 //       |     |                   |     |
 //       |_____|                   |_____|
-//       |                               |
+// nodek |                               | nodel
 //     o-|                               |-o
 //       |_____                     _____|
 //       |     |                   |     |
@@ -24,7 +24,7 @@
 //       |_____|                   |_____|
 //       |_______________________________|
 //                       |
-//                       o
+//                       o nodej
 //
 //
 //
@@ -36,9 +36,11 @@
 #include "Switch.hpp"
 #include "Diode.hpp"
 
-int main(){
+
+H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
     
     //define components
+    Diode(nodek, nodei);
     
     
 }
