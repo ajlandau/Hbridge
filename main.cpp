@@ -4,10 +4,7 @@
 //
 //  Created by Amy Landau on 3/23/17.
 //  Copyright © 2017 Amy Landau. All rights reserved.
-//
-// Hello hello
 
-// Testing for show and tell
 
 #include <iostream>
 

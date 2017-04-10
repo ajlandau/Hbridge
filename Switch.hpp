@@ -5,7 +5,6 @@
 //  Created by Amy Landau on 3/24/17.
 //  Copyright © 2017 Amy Landau. All rights reserved.
 //
-//can you hear me now?
 //
 #ifndef Switch_hpp
 #define Switch_hpp

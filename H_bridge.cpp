@@ -26,12 +26,6 @@
 //                       |
 //                       o nodej
 //
-//
-// hello
-// blah blah blah
-//
-//
-// eeeeeee
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
@@ -42,6 +36,18 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
     
     //define components
     Diode(nodek, nodei);
+    Diode(nodej, nodek);
+    Diode(nodej, nodel);
+    Diode(nodel, nodei);
     
+    switch(state){
+        case 0:
+            
+        case 1:
+            
+        case 2:
+            
+            
+    }
     
 }
