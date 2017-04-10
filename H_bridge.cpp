@@ -26,9 +26,6 @@
 //                       |
 //                       o nodej
 //
-//
-//
-//
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
