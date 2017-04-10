@@ -15,7 +15,7 @@
 //       |     |                   |     |
 //       |_____|                   |_____|
 // nodek |                               | nodel
-//     o-|                               |-o
+//    o--|                               |--o
 //       |_____                     _____|
 //       |     |                   |     |
 //     \     -----               -----     /
@@ -29,8 +29,7 @@
 //
 // hello
 // blah blah blah
-//
-//iAN
+
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
