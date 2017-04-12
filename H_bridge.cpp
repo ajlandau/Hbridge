@@ -41,7 +41,11 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
     Diode(nodel, nodei);
     
     switch(state){
-        case 0: // "off" state
+        case 0: // "off" state with all open
+            Switch(nodei, nodek, 0);
+            Switch(nodei, nodel, 0);
+            Switch(nodek, nodej, 0);
+            Switch(nodel, nodej, 0);
             
         case 1: // Forward state
             
