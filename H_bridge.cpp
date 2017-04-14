@@ -25,7 +25,6 @@
 //       |_______________________________|
 //                       |
 //                       o nodej
-//
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
@@ -48,9 +47,16 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
             Switch(nodel, nodej, 0);
             
         case 1: // Forward state
+            Switch(nodei, nodek, 1);
+            Switch(nodei, nodel, 0);
+            Switch(nodek, nodej, 0);
+            Switch(nodel, nodej, 1);
             
         case 2: //Reverse state
-            
+            Switch(nodei, nodek, 0);
+            Switch(nodei, nodel, 1);
+            Switch(nodek, nodej, 1);
+            Switch(nodel, nodej, 0);
             
     }
     
