@@ -25,14 +25,6 @@
 //       |_______________________________|
 //                       |
 //                       o nodej
-//
-<<<<<<< HEAD
-//
-// hello
-// blah blah blah
-
-=======
->>>>>>> origin/master
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
