@@ -5,7 +5,7 @@
 //  Created by Amy Landau on 3/31/17.
 //  Copyright © 2017 Amy Landau. All rights reserved.
 //
-//                       o
+//                       o  Positive
 //                       | nodei
 //        _______________|_______________
 //       |_____                     _____|
@@ -15,8 +15,8 @@
 //       |     |                   |     |
 //       |_____|                   |_____|
 // nodek |                               | nodel
-//    o--|                               |--o
-//       |_____                     _____|
+//    o--|                               |--o neg
+//  pos |_____                     _____|
 //       |     |                   |     |
 //     \     -----               -----     /
 //  s3  \     /_\ D3          D4  /_\     /  s4
@@ -24,7 +24,7 @@
 //       |_____|                   |_____|
 //       |_______________________________|
 //                       |
-//                       o nodej
+//              negative o nodej
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
@@ -41,10 +41,10 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
     
     switch(state){
         case 0: // "off" state with all open
-            Switch(nodei, nodek, 0);
-            Switch(nodei, nodel, 0);
-            Switch(nodek, nodej, 0);
-            Switch(nodel, nodej, 0);
+            Switch(nodei, nodek, 0); // switch 1
+            Switch(nodei, nodel, 0); // switch 2
+            Switch(nodek, nodej, 0); // switch 3
+            Switch(nodel, nodej, 0); // switch 4
             
         case 1: // Forward state
             Switch(nodei, nodek, 1);
