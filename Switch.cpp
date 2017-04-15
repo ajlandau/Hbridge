@@ -43,6 +43,7 @@ void Switch::Step(double t, double dt){
 
 void Switch::DC(){
     
+    Step(0, 0);
     
 }
 
@@ -52,6 +53,8 @@ double Switch::GetVoltage(){
 }
 
 double Switch::GetCurrent(){
+    
+    // look at diode:
     switch(state)
     {
         case 0:

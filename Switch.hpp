@@ -21,6 +21,7 @@ public:
     void Init();
     void DC();
     void Step(double t, double dt);
+    void Step(bool state);
     
     //viewable accessors:
     double GetVoltage();
