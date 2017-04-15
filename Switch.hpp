@@ -4,8 +4,7 @@
 //
 //  Created by Amy Landau on 3/24/17.
 //  Copyright © 2017 Amy Landau. All rights reserved.
-//
-//
+
 #ifndef Switch_hpp
 #define Switch_hpp
 
@@ -22,6 +21,7 @@ public:
     void Init();
     void DC();
     void Step(double t, double dt);
+    void Step(bool state);
     
     //viewable accessors:
     double GetVoltage();

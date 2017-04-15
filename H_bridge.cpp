@@ -5,7 +5,7 @@
 //  Created by Amy Landau on 3/31/17.
 //  Copyright © 2017 Amy Landau. All rights reserved.
 //
-//                       o
+//                       o  Positive
 //                       | nodei
 //        _______________|_______________
 //       |_____                     _____|
@@ -15,8 +15,8 @@
 //       |     |                   |     |
 //       |_____|                   |_____|
 // nodek |                               | nodel
-//    o--|                               |--o
-//       |_____                     _____|
+//    o--|                               |--o neg
+//  pos |_____                     _____|
 //       |     |                   |     |
 //     \     -----               -----     /
 //  s3  \     /_\ D3          D4  /_\     /  s4
@@ -24,30 +24,61 @@
 //       |_____|                   |_____|
 //       |_______________________________|
 //                       |
-//                       o nodej
-//
+//              negative o nodej
 
 #include "H_bridge.hpp"
 #include "Switch.hpp"
 #include "Diode.hpp"
 
 
-H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int state){
+H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int signal){
     
+    
+    this->signal = signal;
     //define components
     Diode(nodek, nodei);
     Diode(nodej, nodek);
     Diode(nodej, nodel);
     Diode(nodel, nodei);
     
-    switch(state){
-        case 0:
-            
-        case 1:
-            
-        case 2:
-            
-            
-    }
+    /*
+     
+     0. add Switch instance refernces as members to H_Bridge
+     1. construct switches in constuctor, no state argument (just nodes)
+     2. implement Step(bool state) for switch model
+     3. call Step(bool state) from H_Braige.Step(...)
+     
+     */
     
+
+    
+}
+
+
+void H_Bridge::Step(double t, double dt){
+    
+    int state = (int)GetSignal(signal);
+    
+    // call Switch model Step functions in switch...
+
+switch(state){
+    case 0: // "off" state with all open
+        Switch(nodei, nodek, 0); // switch 1
+        Switch(nodei, nodel, 0); // switch 2
+        Switch(nodek, nodej, 0); // switch 3
+        Switch(nodel, nodej, 0); // switch 4
+        
+    case 1: // Forward state
+        Switch(nodei, nodek, 1);
+        Switch(nodei, nodel, 0);
+        Switch(nodek, nodej, 0);
+        Switch(nodel, nodej, 1);
+        
+    case 2: //Reverse state
+        Switch(nodei, nodek, 0);
+        Switch(nodei, nodel, 1);
+        Switch(nodek, nodej, 1);
+        Switch(nodel, nodej, 0);
+        
+}
 }
