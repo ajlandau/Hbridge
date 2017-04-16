@@ -66,18 +66,22 @@ void H_Bridge::Step(double t, double dt){
 switch(state){
     case 0: // "off" state with all open
         S1.Signal(0);
+        S2.Signal(0);
+        S3.Signal(0);
+        S4.Signal(0);
+        
         
     case 1: // Forward state
-        Switch(nodei, nodek, 1);
-        Switch(nodei, nodel, 0);
-        Switch(nodek, nodej, 0);
-        Switch(nodel, nodej, 1);
+        S1.Signal(1);
+        S2.Signal(0);
+        S3.Signal(0);
+        S4.Signal(1);
         
     case 2: //Reverse state
-        Switch(nodei, nodek, 0);
-        Switch(nodei, nodel, 1);
-        Switch(nodek, nodej, 1);
-        Switch(nodel, nodej, 0);
+        S1.Signal(0);
+        S2.Signal(1);
+        S3.Signal(1);
+        S4.Signal(0);
         
 }
 }

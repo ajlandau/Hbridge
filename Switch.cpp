@@ -14,7 +14,6 @@
 Switch::Switch(int nodei, int nodej){
     this->nodei = nodei;
     this->nodej = nodej;
-    int state = 0;
     
 }
 void Switch::Init(){
