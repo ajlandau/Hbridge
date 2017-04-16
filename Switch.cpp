@@ -11,21 +11,21 @@
 
 #include <iostream>
 
-Switch::Switch(int nodei, int nodej, int state){
+Switch::Switch(int nodei, int nodej){
     this->nodei = nodei;
     this->nodej = nodej;
     
-    this->state = state;
 }
 void Switch::Init(){
     this-> nodep = GetNextNode();
-}
-
-void Switch::Step(double t, double dt){
     AddJacobian(nodei, nodep, 1.0);
     AddJacobian(nodej, nodep, -1.0);
     AddJacobian(nodep, nodei, 1.0);
     AddJacobian(nodep, nodej, -1.0);
+}
+
+void Switch::Signal(int state){
+
     
     switch(state)
     {
@@ -33,7 +33,7 @@ void Switch::Step(double t, double dt){
             AddJacobian(nodep, nodep, Roff);
             AddBEquivalent(nodep, GetVoltage());
         case 1:
-            AddJacobian(nodep, nodei, Ron);
+            AddJacobian(nodep, nodep, Ron);
             AddBEquivalent(nodep, -Ron*GetCurrent());
             
             
@@ -41,8 +41,27 @@ void Switch::Step(double t, double dt){
     
 }
 
+
+void Switch::Changestate(int newstate)
+{
+    if( newstate != state)
+    {
+        switch(newstate)
+        {
+            case 0:
+                AddJacobian(nodep, nodep, Roff);
+                AddBEquivalent(nodep, GetVoltage());
+            case 1:
+                AddJacobian(nodep, nodep, Ron);
+                AddBEquivalent(nodep, -Ron*GetCurrent());
+
+    }
+}
+    return;
+}
 void Switch::DC(){
     
+    Step(0, 0);
     
 }
 
@@ -52,6 +71,8 @@ double Switch::GetVoltage(){
 }
 
 double Switch::GetCurrent(){
+    
+    // look at diode:
     switch(state)
     {
         case 0:

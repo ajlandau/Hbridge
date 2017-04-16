@@ -35,19 +35,35 @@
 
 #include <stdio.h>
 #include "Device.hpp"
-
+#include "Switch.hpp"
 
 class H_Bridge:public Device
 {
 public:
    //Constructor
-    H_Bridge(int nodei, int nodej, int nodek, int nodel, int state);
+    H_Bridge(int nodei, int nodej, int nodek, int nodel, int signal);
     
-   //Device Interface
+    //Device Interface
+    void Step(double t, double dt);
+    
+   
+    
     
 private:
     
     // Internal Construction
+    int nodei;
+    int nodej;
+    int nodek;
+    int nodel;
+    int signal;
+    char output;
+    // switches:
     
+    Switch S1;
+    Switch S2;
+    Switch S3;
+    Switch S4;
+
 };
 #endif /* H_bridge_hpp */
