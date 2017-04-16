@@ -41,6 +41,10 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int signal){
     Diode(nodej, nodel);
     Diode(nodel, nodei);
     
+    
+   
+    
+    
     /*
      
      0. add Switch instance refernces as members to H_Bridge
@@ -58,27 +62,34 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int signal){
 void H_Bridge::Step(double t, double dt){
     
     int state = (int)GetSignal(signal);
+
     
     // call Switch model Step functions in switch...
 
 switch(state){
     case 0: // "off" state with all open
-        Switch(nodei, nodek, 0); // switch 1
-        Switch(nodei, nodel, 0); // switch 2
-        Switch(nodek, nodej, 0); // switch 3
-        Switch(nodel, nodej, 0); // switch 4
+        S1.Changestate(0);
+        S2.Changestate(0);
+        S3.Changestate(0);
+        S4.Changestate(0);
+        output = 'W';
+        
         
     case 1: // Forward state
-        Switch(nodei, nodek, 1);
-        Switch(nodei, nodel, 0);
-        Switch(nodek, nodej, 0);
-        Switch(nodel, nodej, 1);
+        S1.Changestate(1);
+        S2.Changestate(0);
+        S3.Changestate(0);
+        S4.Changestate(1);
+        output = 'F';
         
     case 2: //Reverse state
-        Switch(nodei, nodek, 0);
-        Switch(nodei, nodel, 1);
-        Switch(nodek, nodej, 1);
-        Switch(nodel, nodej, 0);
+        S1.Changestate(0);
+        S2.Changestate(1);
+        S3.Changestate(1);
+        S4.Changestate(0);
+        output = 'R';
         
 }
+    
+    
 }
