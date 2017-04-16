@@ -40,16 +40,18 @@ H_Bridge::H_Bridge(int nodei, int nodej, int nodek, int nodel, int signal){
     Diode(nodej, nodek);
     Diode(nodej, nodel);
     Diode(nodel, nodei);
-    
     /*
      
      0. add Switch instance refernces as members to H_Bridge
      1. construct switches in constuctor, no state argument (just nodes)
      2. implement Step(bool state) for switch model
      3. call Step(bool state) from H_Braige.Step(...)
-     
      */
-    
+    S1 = Switch(nodei, nodek);
+    S2 = Switch(nodei, nodel);
+    S3 = Switch(nodek, nodej);
+    S4 = Switch(nodel, nodej);
+
 
     
 }
@@ -63,10 +65,7 @@ void H_Bridge::Step(double t, double dt){
 
 switch(state){
     case 0: // "off" state with all open
-        Switch(nodei, nodek, 0); // switch 1
-        Switch(nodei, nodel, 0); // switch 2
-        Switch(nodek, nodej, 0); // switch 3
-        Switch(nodel, nodej, 0); // switch 4
+        S1.Signal(0);
         
     case 1: // Forward state
         Switch(nodei, nodek, 1);

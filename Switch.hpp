@@ -31,6 +31,7 @@ public:
     //viewable accessors:
     double GetVoltage();
     double GetCurrent();
+    void Signal();
 
 private:
     

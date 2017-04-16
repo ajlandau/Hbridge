@@ -63,6 +63,5 @@ private:
     Switch S2;
     Switch S3;
     Switch S4;
-    
 };
 #endif /* H_bridge_hpp */
