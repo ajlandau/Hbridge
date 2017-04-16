@@ -11,21 +11,21 @@
 
 #include <iostream>
 
-Switch::Switch(int nodei, int nodej, int state){
+Switch::Switch(int nodei, int nodej){
     this->nodei = nodei;
     this->nodej = nodej;
     
-    this->state = state;
 }
 void Switch::Init(){
     this-> nodep = GetNextNode();
-}
-
-void Switch::Step(double t, double dt){
     AddJacobian(nodei, nodep, 1.0);
     AddJacobian(nodej, nodep, -1.0);
     AddJacobian(nodep, nodei, 1.0);
     AddJacobian(nodep, nodej, -1.0);
+}
+
+void Switch::Signal(int state){
+
     
     switch(state)
     {

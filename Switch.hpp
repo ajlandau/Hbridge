@@ -15,7 +15,12 @@ class Switch : public Device
 {
 public:
     //Constructor
+    
+    //Normal Constructor
     Switch(int nodei, int nodej, int state);
+    
+    //Specialized constructor for dynamic switching
+    Switch(int nodei, int nodej);
     
     // Device interface:
     void Init();
@@ -27,6 +32,7 @@ public:
     //viewable accessors:
     double GetVoltage();
     double GetCurrent();
+    void Signal(int state);
 
 private:
     
