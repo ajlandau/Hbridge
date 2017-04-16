@@ -27,6 +27,7 @@ public:
     void DC();
     void Step(double t, double dt);
     void Step(bool state);
+    void Changestate(int newstate);
     
     //viewable accessors:
     double GetVoltage();

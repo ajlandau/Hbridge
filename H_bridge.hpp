@@ -37,7 +37,6 @@
 #include "Device.hpp"
 #include "Switch.hpp"
 
-
 class H_Bridge:public Device
 {
 public:
@@ -49,6 +48,7 @@ public:
     
    
     
+    
 private:
     
     // Internal Construction
@@ -57,11 +57,13 @@ private:
     int nodek;
     int nodel;
     int signal;
-    
+    char output;
     // switches:
+    
     Switch S1;
     Switch S2;
     Switch S3;
     Switch S4;
+
 };
 #endif /* H_bridge_hpp */

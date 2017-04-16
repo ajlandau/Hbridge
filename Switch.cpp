@@ -33,7 +33,7 @@ void Switch::Signal(int state){
             AddJacobian(nodep, nodep, Roff);
             AddBEquivalent(nodep, GetVoltage());
         case 1:
-            AddJacobian(nodep, nodei, Ron);
+            AddJacobian(nodep, nodep, Ron);
             AddBEquivalent(nodep, -Ron*GetCurrent());
             
             
@@ -41,6 +41,24 @@ void Switch::Signal(int state){
     
 }
 
+
+void Switch::Changestate(int newstate)
+{
+    if( newstate != state)
+    {
+        switch(newstate)
+        {
+            case 0:
+                AddJacobian(nodep, nodep, Roff);
+                AddBEquivalent(nodep, GetVoltage());
+            case 1:
+                AddJacobian(nodep, nodep, Ron);
+                AddBEquivalent(nodep, -Ron*GetCurrent());
+
+    }
+}
+    return;
+}
 void Switch::DC(){
     
     Step(0, 0);
