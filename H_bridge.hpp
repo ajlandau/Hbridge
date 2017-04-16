@@ -59,9 +59,11 @@ private:
     int signal;
     char output;
     // switches:
-    Switch S1 = Switch(nodei,nodek,0);
-    Switch S2 = Switch(nodei,nodek,0);
-    Switch S3 = Switch(nodei,nodek,0);
-    Switch S4 = Switch(nodei,nodek,0);
+    
+    Switch S1;
+    Switch S2;
+    Switch S3;
+    Switch S4;
+
 };
 #endif /* H_bridge_hpp */
