@@ -13,5 +13,8 @@
 #include "Inductor.hpp"
 #include "Diode.hpp"
 #include "StateSpace.hpp"
+#inculde "Switch.hpp"
+#include "H_Bridge.hpp"
+
 
 #endif

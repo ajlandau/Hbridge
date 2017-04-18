@@ -385,6 +385,10 @@ Column Vector Type
 
 template<class T> class columnVector : public matrix<T>
 {
+    
+protected:
+    
+    
 
 public:
 
@@ -761,7 +765,7 @@ template<class T> void matrix<T>::SetAsEye()
     }
 }
 
-template<class T> bool matrix<T>::operator==(const matrix<T>&) const
+template<class T> bool matrix<T>::operator==(const matrix<T>& B) const
 {
     if (GetNumRows() != B.GetNumRows() || GetNumColumns() != B.GetNumColumns())
     {
@@ -890,9 +894,9 @@ template<class T> matrix<T>& matrix<T>::operator*=(const T k)
 
 template<class T> matrix<T>& matrix<T>::operator/=(const T k)
 {
-    for (int i = 1; i <= GetNumRows; i++)
+    for (int i = 1; i <= GetNumRows(); i++)
     {
-        for (int j = 1; j <= GetNumColumns; j++)
+        for (int j = 1; j <= GetNumColumns(); j++)
         {
             SetElement(i, j, GetElement(i, j) / k);
         }

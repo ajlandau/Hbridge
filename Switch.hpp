@@ -16,6 +16,8 @@ class Switch : public Device
 public:
     //Constructor
     
+    Switch() {};
+    
     //Normal Constructor
     Switch(int nodei, int nodej, int state);
     
